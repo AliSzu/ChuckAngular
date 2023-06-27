@@ -1,0 +1,41 @@
+.formControl {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  row-gap: 1.5rem;
+  margin-bottom: 1.5em;
+}
+
+.nameInput {
+  padding: 1em;
+  padding-bottom: 0.5em;
+  padding-top: 1.5em;
+  font-size: 1em;
+  border: 2px solid var(--dark-gray-color);
+  border-radius: var(--border-radius);
+
+  &:focus {
+    outline: none;
+  }
+
+  &:valid {
+    border-color: var(--dark-color);
+  }
+}
+
+.inputLabel {
+  font-weight: 500;
+  position: absolute;
+  cursor: text;
+  top: 1em;
+  left: 1rem;
+  padding: 2px;
+  color: var(--dark-gray-color);
+  transition: all 0.15s ease-in-out;
+}
+
+.nameInput:valid + .inputLabel,
+.nameInput:focus + .inputLabel {
+  top: 0.5em;
+  font-size: 0.8rem;
+}

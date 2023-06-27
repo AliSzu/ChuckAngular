@@ -9,10 +9,6 @@
     --border-radius: 5px;
 }
 
-#root {
-  width: 100%;
-  height: 100%;
-}
 
 html,
 body {
@@ -27,3 +23,31 @@ body {
   width: 100%;
   height: 100%;
 }
+
+.btn {
+    width: 100%;
+    border: none;
+    font-size: 1em;
+    padding: 1em;
+    transition-duration: 0.4s;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  
+    &:hover:enabled {
+      filter: brightness(80%);
+      cursor: pointer;
+    }
+  
+    &--primary {
+      border-radius: var(--border-radius);
+      background-color: var(--dark-color);
+      color: var(--white-color);
+    }
+  
+    &:disabled {
+      color: var(--dark-color);
+      background-color: var(--light-gray-color);
+    }
+  }

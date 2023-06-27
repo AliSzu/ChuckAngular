@@ -1,2 +1,4 @@
-<div class="card">Chuck Norris Card - Placeholder</div>
-<!-- placeholder for entire card-->
+<div class="card">
+  <app-image [name]="customName"></app-image>
+  <app-input-form (onNameChange)="setCustomName($event)"></app-input-form>
+</div>

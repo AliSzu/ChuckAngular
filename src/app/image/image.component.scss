@@ -1,0 +1,12 @@
+.image {
+  width: 100%;
+  max-height: 9rem;
+  border-radius: var(--border-radius);
+  &Chuck {
+    object-fit: cover;
+    object-position: 100% 35%;
+  }
+  &Unknown {
+    object-fit: contain;
+  }
+}
