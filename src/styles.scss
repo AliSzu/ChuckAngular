@@ -1,14 +1,5 @@
-/* You can add global styles to this file, and also import other style files */
-
-:root {
-    --dark-color: #34394f;
-    --dark-gray-color: #c4c4c4;
-    --light-gray-color: #f5f6f8;
-    --white-color: #ffffff;
-    --error-red-color: #f39a9a;
-    --border-radius: 5px;
-}
-
+@import "./styles/buttons";
+@import "./styles/variables";
 
 html,
 body {
@@ -24,30 +15,3 @@ body {
   height: 100%;
 }
 
-.btn {
-    width: 100%;
-    border: none;
-    font-size: 1em;
-    padding: 1em;
-    transition-duration: 0.4s;
-    font-weight: 600;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  
-    &:hover:enabled {
-      filter: brightness(80%);
-      cursor: pointer;
-    }
-  
-    &--primary {
-      border-radius: var(--border-radius);
-      background-color: var(--dark-color);
-      color: var(--white-color);
-    }
-  
-    &:disabled {
-      color: var(--dark-color);
-      background-color: var(--light-gray-color);
-    }
-  }

@@ -6,9 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./card.component.scss'],
 })
 export class CardComponent {
-  customName = '';
+  public customName = '';
 
-  setCustomName(name: string) {
+  public setCustomName(name: string): void {
     this.customName = name;
   }
 }
