@@ -7,6 +7,7 @@ import { TranslateLoader, TranslateModule, TranslateStore } from '@ngx-translate
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { CardModule } from './features/card/card.module';
+import { i18nService } from './core/services/i18n.service';
 
 export function HttpLoaderFactory(httpClient: HttpClient) {
   return new TranslateHttpLoader(httpClient, './assets/i18n/', '.json');
@@ -28,7 +29,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
       extend: true
     }),
   ],
-  providers: [TranslateStore],
+  providers: [TranslateStore, i18nService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

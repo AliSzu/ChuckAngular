@@ -1,0 +1,4 @@
+<div class="snackbar" *ngIf="show" (click)="handleCloseSnackbar()">
+  <div class="label" translate="error.message" [translateParams]="{error: errorMessage}"></div>
+  <div class="dismiss">&times;</div>
+</div>

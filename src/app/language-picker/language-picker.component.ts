@@ -4,7 +4,6 @@ import { TranslateService } from '@ngx-translate/core';
 @Component({
   selector: 'app-language-picker',
   templateUrl: './language-picker.component.html',
-  styleUrls: ['./language-picker.component.scss'],
 })
 export class LanguagePickerComponent{
   public availableLanguages = this.translate.getLangs();
