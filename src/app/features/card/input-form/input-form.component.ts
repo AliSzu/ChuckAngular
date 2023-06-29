@@ -1,16 +1,21 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-input-form',
   templateUrl: './input-form.component.html',
   styleUrls: ['./input-form.component.scss']
 })
-export class InputFormComponent {
-  @Output() onNameChange = new EventEmitter<string>();
+export class InputFormComponent{
+  @Output() public onNameChange = new EventEmitter<string>();
 
-  customName = ''
+  public customName = ''
+  public buttonName = 'Chuck Norris'
 
-  onSubmit(): void {
+  public onSubmit(): void {
     this.onNameChange.emit(this.customName)
+  }
+
+  public onChange(): void {
+    this.buttonName = this.customName ? this.customName : 'Chuck Norris'
   }
 }

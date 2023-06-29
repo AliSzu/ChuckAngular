@@ -1,0 +1,11 @@
+<div *ngFor="let language of availableLanguages">
+  <input
+    [value]="language"
+    type="radio"
+    name="checkbox"
+    #langSelect
+    (change)="onLanguageChange(language)"
+    [checked]="language === translate.currentLang"
+  />
+  {{ language }}
+</div>

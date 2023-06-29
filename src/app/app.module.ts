@@ -3,16 +3,32 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
-import { CardComponent } from './features/card/card.component';
-import { ImageComponent } from './features/card/image/image.component';
-import { InputFormComponent } from './features/card/input-form/input-form.component';
+import { TranslateLoader, TranslateModule, TranslateStore } from '@ngx-translate/core';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { CardModule } from './features/card/card.module';
 
-import { HttpClientModule} from '@angular/common/http';
+export function HttpLoaderFactory(httpClient: HttpClient) {
+  return new TranslateHttpLoader(httpClient, './assets/i18n/', '.json');
+}
 
 @NgModule({
-  declarations: [AppComponent, CardComponent, ImageComponent, InputFormComponent],
-  imports: [BrowserModule, FormsModule, HttpClientModule],
-  providers: [],
+  declarations: [AppComponent],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    CardModule,
+    HttpClientModule,
+    TranslateModule.forChild({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient],
+      },
+      extend: true
+    }),
+  ],
+  providers: [TranslateStore],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -1,20 +1,24 @@
 <form
-  class="formControl"
+  class="form-control"
   novalidate="true"
   (ngSubmit)="onSubmit()"
   #form="ngForm"
 >
   <input
-    class="nameInput"
+    class="name-input"
     id="impersonateInput"
     required="true"
     [(ngModel)]="customName"
     name="customName"
+    (ngModelChange)="onChange()"
   />
-  <label class="inputLabel" for="impersonateInput"
-    >Impersonate Chuck Norris</label
-  >
-  <button type="submit" class="btn btn--primary">
-    Draw a random {{ customName ? customName : 'Chuck Norris' }} Jokes
-  </button>
+  <label class="input-label" for="impersonateInput">{{
+    "inputField" | translate
+  }}</label>
+  <button
+    type="submit"
+    class="btn btn--primary"
+    translate="button.draw"
+    [translateParams]="{ name: buttonName}"
+  ></button>
 </form>
