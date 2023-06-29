@@ -1,0 +1,6 @@
+{
+  "inputField": "Impersonate Chuck Norris",
+  "button": {
+    "draw": "Draw a random {{name}} Joke"
+  }
+}

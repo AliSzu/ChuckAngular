@@ -1,0 +1,24 @@
+<form
+  class="form-control"
+  novalidate="true"
+  (ngSubmit)="onSubmit()"
+  #form="ngForm"
+>
+  <input
+    class="name-input"
+    id="impersonateInput"
+    required="true"
+    [(ngModel)]="customName"
+    name="customName"
+    (ngModelChange)="onChange()"
+  />
+  <label class="input-label" for="impersonateInput">{{
+    "inputField" | translate
+  }}</label>
+  <button
+    type="submit"
+    class="btn btn--primary"
+    translate="button.draw"
+    [translateParams]="{ name: buttonName}"
+  ></button>
+</form>
