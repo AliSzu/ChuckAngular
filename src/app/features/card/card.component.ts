@@ -1,6 +1,5 @@
-import { HttpErrorResponse } from '@angular/common/http';
-import { Component, OnInit, ɵɵsetComponentScope } from '@angular/core';
-import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
+import { Component, OnInit } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 import { ChuckJoke } from 'src/app/core/models/chuck-joke.model';
 import { JokeError } from 'src/app/core/models/joke-error';
 import { ChuckJokesService } from 'src/app/core/services/chuck-jokes.service';
