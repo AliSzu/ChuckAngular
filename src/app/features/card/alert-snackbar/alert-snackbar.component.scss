@@ -1,0 +1,36 @@
+.snackbar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 3;
+  margin: 1em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--error-red-color);
+  border-radius: var(--border-radius);
+
+  padding: 0.5em;
+  animation: 300ms ease-out forwards slide-up;
+}
+
+.snackbar > * {
+  padding: 1rem;
+}
+
+.dismiss {
+  font-size: 120%;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(3rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

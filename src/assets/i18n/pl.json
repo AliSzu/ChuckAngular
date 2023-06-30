@@ -2,5 +2,10 @@
   "inputField": "Naśladuj Chucka Norrisa",
   "button": {
     "draw": "Wylosuj losowy żart o {{name}}"
+  },
+  "error": {
+    "title": "Ups! Coś poszło nie tak",
+    "message": "Wystąpił błąd : {{error}}",
+    "unknown" : "Nieznany błąd"
   }
 }
