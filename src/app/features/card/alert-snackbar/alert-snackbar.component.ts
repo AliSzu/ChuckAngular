@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { JokeError } from 'src/app/core/models/joke-error';
 
 @Component({
@@ -7,13 +7,11 @@ import { JokeError } from 'src/app/core/models/joke-error';
   styleUrls: ['./alert-snackbar.component.scss']
 })
 export class AlertSnackbarComponent {
-  @Input() public error = {
-    isPresent: false,
-    message: ''
-  } as JokeError
+  @Output() public onCloseError = new EventEmitter<boolean>();
+  @Input() public error = {} as JokeError
 
-  public handleCloseSnackbar(): void {
-    this.error.isPresent = false
+  public closeSnackbar(): void {
+    this.onCloseError.emit(false)
   }
 
 }

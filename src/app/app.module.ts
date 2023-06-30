@@ -19,12 +19,13 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     FormsModule,
     CardModule,
     HttpClientModule,
-    TranslateModule.forChild({
+    TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
         useFactory: HttpLoaderFactory,
         deps: [HttpClient],
       },
+      defaultLanguage: 'en',
       extend: true
     }),
   ],

@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { TranslateService } from '@ngx-translate/core';
 import { ChuckJoke } from 'src/app/core/models/chuck-joke.model';
 import { JokeError } from 'src/app/core/models/joke-error';
 import { ChuckJokesService } from 'src/app/core/services/chuck-jokes.service';
 
+@UntilDestroy()
 @Component({
   selector: 'app-card',
   templateUrl: './card.component.html',
@@ -21,16 +23,21 @@ export class CardComponent implements OnInit {
 
   ngOnInit(): void {
     this.onFetchJokes();
-    this.translate.onLangChange.subscribe(() =>
-      this.translate
-        .get('error.unknown')
-        .subscribe((res) => this.setUnknownErrorMessage(res))
-    );
+
+    this.translate.onLangChange
+      .pipe(untilDestroyed(this))
+      .subscribe(() =>
+        this.setUnknownErrorMessage(this.translate.instant('error.unknown'))
+      );
   }
 
   public setCustomName(name: string): void {
     this.customName = name;
     this.onFetchJokes();
+  }
+
+  public changeError(value: boolean): void {
+    this.error.isPresent = value;
   }
 
   private setUnknownErrorMessage(value: string): void {

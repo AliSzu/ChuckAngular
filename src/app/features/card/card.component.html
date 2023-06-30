@@ -1,5 +1,5 @@
 <div class="card">
-  <app-alert-snackbar [error]="error"></app-alert-snackbar>
+  <app-alert-snackbar [error]="error" (onCloseError)="changeError($event)"></app-alert-snackbar>
   <app-language-picker class="language-container"></app-language-picker>
   <app-image [name]="customName"></app-image>
   <div *ngIf="!error.isPresent; else errorMessage">{{ chuckJoke.value }}</div>
