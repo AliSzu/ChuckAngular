@@ -5,6 +5,7 @@
   },
   "error": {
     "title": "Whoops! Something went wrong",
-    "message": "An error has occurred : {{error}}"
+    "message": "An error has occurred : {{error}}",
+    "unknown": "Unknown error"
   }
 }

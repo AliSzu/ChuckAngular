@@ -1,9 +1,8 @@
 <div class="card">
-  <app-alert-snackbar [show]="showSnackbar()" [errorMessage]="getErrorMessage()"></app-alert-snackbar>
+  <app-alert-snackbar [error]="error"></app-alert-snackbar>
   <app-language-picker class="language-container"></app-language-picker>
   <app-image [name]="customName"></app-image>
-  <div *ngIf="chuckJoke.value; else errorMessage">{{ chuckJoke.value }}</div>
+  <div *ngIf="!error.isPresent; else errorMessage">{{ chuckJoke.value }}</div>
   <ng-template #errorMessage>{{ "error.title" | translate }}</ng-template>
-  {{error.ok}}
   <app-input-form (onNameChange)="setCustomName($event)"></app-input-form>
 </div>

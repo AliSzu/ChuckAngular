@@ -5,6 +5,7 @@
   },
   "error": {
     "title": "Ups! Coś poszło nie tak",
-    "message": "Wystąpił błąd : {{error}}"
+    "message": "Wystąpił błąd : {{error}}",
+    "unknown" : "Nieznany błąd"
   }
 }

@@ -19,7 +19,7 @@ export class ChuckJokesService {
     }
 
     public getRandomJoke(name?: string): Observable<ChuckJoke> {
-        return this.httpClient.request<ChuckJoke>('GET', `${this.baseUrl}${ApiPaths.Random}` , {params: {
+        return this.httpClient.get<ChuckJoke>(`${this.baseUrl}${ApiPaths.Random}` , {params: {
             ...(name && { name: name }),
         }}).pipe(
             catchError(this.handleError)
