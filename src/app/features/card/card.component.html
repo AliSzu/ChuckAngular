@@ -4,5 +4,6 @@
   <app-image [name]="customName"></app-image>
   <div *ngIf="!error.isPresent; else errorMessage">{{ chuckJoke.value }}</div>
   <ng-template #errorMessage>{{ "error.title" | translate }}</ng-template>
+  <app-category-select (onCategoryChange) = "setCategory($event)"></app-category-select>
   <app-input-form (onNameChange)="setCustomName($event)"></app-input-form>
 </div>

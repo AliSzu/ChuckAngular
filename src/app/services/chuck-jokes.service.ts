@@ -1,9 +1,9 @@
 import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable, catchError, throwError } from "rxjs";
-import { ChuckJoke } from "../models/chuck-joke.model";
+import { ChuckJoke } from "../core/models/chuck-joke.model";
 import { environment } from "src/environments/environment";
-import { ApiPaths } from "../enums/api-paths";
+import { ApiPaths } from "../core/enums/api-paths";
 
 @Injectable({
     providedIn: 'root'
@@ -18,9 +18,10 @@ export class ChuckJokesService {
         return throwError(() => error)
     }
 
-    public getRandomJoke(name?: string): Observable<ChuckJoke> {
+    public getRandomJoke(name?: string, category?: string): Observable<ChuckJoke> {
         return this.httpClient.get<ChuckJoke>(`${this.baseUrl}${ApiPaths.Random}` , {params: {
             ...(name && { name: name }),
+            ...(category && { category: category})
         }}).pipe(
             catchError(this.handleError)
         ) 

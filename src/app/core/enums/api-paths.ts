@@ -1,3 +1,4 @@
 export enum ApiPaths {
-    Random = '/random'
+    Random = '/random',
+    Category = '/categories'
 }

@@ -3,7 +3,7 @@ import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { TranslateService } from '@ngx-translate/core';
 import { ChuckJoke } from 'src/app/core/models/chuck-joke.model';
 import { JokeError } from 'src/app/core/models/joke-error';
-import { ChuckJokesService } from 'src/app/core/services/chuck-jokes.service';
+import { ChuckJokesService } from 'src/app/services/chuck-jokes.service';
 
 @UntilDestroy()
 @Component({
@@ -15,6 +15,7 @@ export class CardComponent implements OnInit {
   public customName = '';
   public chuckJoke = {} as ChuckJoke;
   public error = {} as JokeError;
+  public category = ''
 
   constructor(
     private chuckJokesService: ChuckJokesService,
@@ -36,6 +37,10 @@ export class CardComponent implements OnInit {
     this.onFetchJokes();
   }
 
+  public setCategory(category: string): void {
+    this.category = category
+  }
+
   public changeError(value: boolean): void {
     this.error.isPresent = value;
   }
@@ -47,7 +52,7 @@ export class CardComponent implements OnInit {
   }
 
   private onFetchJokes() {
-    this.chuckJokesService.getRandomJoke(this.customName).subscribe({
+    this.chuckJokesService.getRandomJoke(this.customName, this.category).subscribe({
       next: (res) => ((this.chuckJoke = res), this.setError(false, '', 0)),
       error: (e) =>
         this.setError(

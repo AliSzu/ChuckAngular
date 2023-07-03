@@ -6,10 +6,18 @@ import { TranslateModule } from '@ngx-translate/core';
 import { ImageComponent } from './image/image.component';
 import { InputFormComponent } from './input-form/input-form.component';
 import { LanguagePickerComponent } from 'src/app/language-picker/language-picker.component';
-import { AlertSnackbarComponent } from './alert-snackbar/alert-snackbar.component';
+import { AlertSnackbarComponent } from '../../shared/components/alert-snackbar/alert-snackbar.component';
+import { CategorySelectComponent } from './category-select/category-select.component';
 
 @NgModule({
-  declarations: [CardComponent, ImageComponent, InputFormComponent, LanguagePickerComponent, AlertSnackbarComponent],
+  declarations: [
+    CardComponent,
+    ImageComponent,
+    InputFormComponent,
+    LanguagePickerComponent,
+    AlertSnackbarComponent,
+    CategorySelectComponent
+  ],
   imports: [BrowserModule, FormsModule, TranslateModule],
   exports: [CardComponent],
 })
