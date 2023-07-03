@@ -1,7 +1,10 @@
-<app-alert-snackbar [error]="error" (onCloseError)="changeError($event)"></app-alert-snackbar>
+<app-alert-snackbar
+  [error]="error"
+  (onCloseError)="changeError($event)"
+></app-alert-snackbar>
 <div class="dropdown" [ngClass]="categoryClass">
   <div class="dropdown-button">{{ category }}</div>
-  <ul class="dropdown-content" *ngIf = "isDropdownOpen">
+  <ul class="dropdown-content" *ngIf="isDropdownOpen">
     <li *ngFor="let category of categories" (click)="changeCategory(category)">
       {{ category }}
     </li>
