@@ -1,0 +1,83 @@
+.dropdown-button {
+  background-color: white;
+  border: 2px solid;
+  text-align: left;
+  font-size: 1em;
+  font-weight: 500;
+  padding: 1em;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  &::first-letter {
+    text-transform: uppercase;
+  }
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-weight: 500;
+  color: var(--dark-gray-color);
+  list-style: none;
+  overflow-x: hidden;
+  border: 2px solid;
+  overflow: auto;
+  border-bottom-left-radius: var(--border-radius);
+  border-bottom-right-radius: var(--border-radius);
+  border-top: none;
+  background-color: var(--white-color);
+  height: 8rem;
+}
+
+li {
+  cursor: pointer;
+  padding: 1em;
+  margin: 5px;
+  margin-right: 0;
+  &:hover {
+    background-color: var(--gray-color);
+    color: var(--dark-color);
+    border-radius: var(--border-radius);
+    font-weight: 600;
+  }
+  &::first-letter {
+    text-transform: uppercase;
+  }
+}
+
+.dropdown {
+  position: relative;
+  width: 100%;
+  display: inline-block;
+  border-color: var(--dark-color);
+  &-content {
+    position: absolute;
+    z-index: 1;
+    margin-top: -5px;
+    width: 100%;
+  }
+}
+
+.active > * {
+  border-color: var(--dark-color);
+}
+
+.inactive > * {
+  border-color: var(--dark-gray-color);
+  color: var(--dark-gray-color);
+}
+
+::-webkit-scrollbar {
+  width: 20px;
+}
+
+::-webkit-scrollbar-thumb {
+  border: 6px solid rgba(0, 0, 0, 0);
+  background-clip: padding-box;
+  border-radius: 20px;
+  background-color: var(--dark-gray-color);
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
