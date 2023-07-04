@@ -10,5 +10,6 @@
   <app-category-select
     (onCategoryChange)="setCategory($event)"
   ></app-category-select>
-  <app-input-form (onNameChange)="setCustomName($event)"></app-input-form>
+  <app-input-form (onNameChange)="setDownloadName($event)" (onNameSubmit)="setCustomName($event)"></app-input-form>
+  <app-save-jokes-form class="save-container" [name]="downloadName" [category]="category"></app-save-jokes-form>
 </div>

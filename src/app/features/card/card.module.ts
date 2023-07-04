@@ -8,6 +8,7 @@ import { InputFormComponent } from './input-form/input-form.component';
 import { LanguagePickerComponent } from 'src/app/language-picker/language-picker.component';
 import { AlertSnackbarComponent } from '../../shared/components/alert-snackbar/alert-snackbar.component';
 import { CategorySelectComponent } from './category-select/category-select.component';
+import { SaveJokesFormModule } from './save-jokes-form/save-jokes-form.module';
 
 @NgModule({
   declarations: [
@@ -16,9 +17,9 @@ import { CategorySelectComponent } from './category-select/category-select.compo
     InputFormComponent,
     LanguagePickerComponent,
     AlertSnackbarComponent,
-    CategorySelectComponent
+    CategorySelectComponent,
   ],
-  imports: [BrowserModule, FormsModule, TranslateModule],
+  imports: [BrowserModule, FormsModule, TranslateModule, SaveJokesFormModule],
   exports: [CardComponent],
 })
 export class CardModule {}

@@ -13,9 +13,10 @@ import { ChuckJokesService } from 'src/app/services/chuck-jokes.service';
 })
 export class CardComponent implements OnInit {
   public customName = '';
+  public downloadName = '';
   public chuckJoke = {} as ChuckJoke;
   public error = {} as JokeError;
-  public category = ''
+  public category = '';
 
   constructor(
     private chuckJokesService: ChuckJokesService,
@@ -37,8 +38,12 @@ export class CardComponent implements OnInit {
     this.onFetchJokes();
   }
 
+  public setDownloadName(name: string): void {
+    this.downloadName = name;
+  }
+
   public setCategory(category: string): void {
-    this.category = category
+    this.category = category;
   }
 
   public changeError(value: boolean): void {
@@ -52,15 +57,17 @@ export class CardComponent implements OnInit {
   }
 
   private onFetchJokes() {
-    this.chuckJokesService.getRandomJoke(this.customName, this.category).subscribe({
-      next: (res) => ((this.chuckJoke = res), this.setError(false, '', 0)),
-      error: (e) =>
-        this.setError(
-          true,
-          this.getErrorMessage(e.status, e.error.error),
-          e.status
-        ),
-    });
+    this.chuckJokesService
+      .getRandomJoke(this.customName, this.category)
+      .subscribe({
+        next: (res) => ((this.chuckJoke = res), this.setError(false, '', 0)),
+        error: (e) =>
+          this.setError(
+            true,
+            this.getErrorMessage(e.status, e.error.error),
+            e.status
+          ),
+      });
   }
 
   private getErrorMessage(message?: string, status?: number): string {

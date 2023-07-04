@@ -6,16 +6,18 @@ import { Component, EventEmitter, Output } from '@angular/core';
   styleUrls: ['./input-form.component.scss']
 })
 export class InputFormComponent{
+  @Output() public onNameSubmit = new EventEmitter<string>();
   @Output() public onNameChange = new EventEmitter<string>();
 
   public customName = ''
   public buttonName = 'Chuck Norris'
 
   public onSubmit(): void {
-    this.onNameChange.emit(this.customName)
+    this.onNameSubmit.emit(this.customName)
   }
 
   public onChange(): void {
     this.buttonName = this.customName ? this.customName : 'Chuck Norris'
+    this.onNameChange.emit(this.customName)
   }
 }

@@ -1,0 +1,37 @@
+.btn-amount {
+  background-color: var(--light-gray-color);
+
+  &-increment {
+    border-radius: 0px var(--border-radius) var(--border-radius) 0px;
+  }
+  &-decrement {
+    border-radius: var(--border-radius) 0px 0px var(--border-radius);
+  }
+}
+
+.save-input {
+  min-width: 0;
+  width: 100%;
+  border: none;
+  text-align: center;
+  outline: none;
+  font-weight: 600;
+  color: var(--dark-color);
+  background-color: var(--light-gray-color);
+  transition-duration: 0.4s;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.input-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.error > * {
+    background-color: var(--error-red-color);
+}

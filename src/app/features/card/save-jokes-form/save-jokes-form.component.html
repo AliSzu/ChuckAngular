@@ -1,0 +1,15 @@
+<div class="save-container">
+  <app-jokes-amount-picker
+    (onJokesChange)="setJokesAmount($event)"
+  ></app-jokes-amount-picker>
+  <button
+    class="btn btn--primary"
+    [disabled]="isButtonDisabled"
+    (click)="downloadJokes()"
+  >
+    {{ "button.save" | translate }}
+  </button>
+</div>
+<p *ngIf="!isAmountValid" class="error-message">
+  {{ "error.input" | translate }}
+</p>
