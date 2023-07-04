@@ -1,6 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 import { FILE_NAME } from 'src/app/constants/jokes';
 import { ChuckJokesService } from 'src/app/services/chuck-jokes.service';
+import { SnackbarService } from 'src/app/services/snackbar.service';
 import { prettifyJokesJSON } from 'src/utils/jokes-utils';
 
 @Component({
@@ -26,7 +28,11 @@ export class SaveJokesFormComponent implements OnInit {
     this.setIsButtonDisabled();
   }
 
-  constructor(private chuckJokesService: ChuckJokesService) {}
+  constructor(
+    private chuckJokesService: ChuckJokesService,
+    private snackbarService: SnackbarService,
+    private translate: TranslateService
+  ) {}
 
   ngOnInit(): void {
     this.setIsButtonDisabled();
@@ -70,6 +76,17 @@ export class SaveJokesFormComponent implements OnInit {
             this.createDownloadLink(jokesArray);
           this.isLoading = false;
         },
+        error: (e) =>
+          this.snackbarService.showSnackbar(
+            this.getErrorMessage(e.status, e.error.error),
+            e.status
+          ),
       });
+  }
+
+  private getErrorMessage(message?: string, status?: number): string {
+    return message
+      ? status + ' ' + message
+      : this.translate.instant('error.unknown');
   }
 }
