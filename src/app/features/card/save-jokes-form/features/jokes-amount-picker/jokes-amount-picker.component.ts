@@ -27,7 +27,7 @@ export class JokesAmountPickerComponent {
       value > MAX_DOWNLOAD_VALUE || value < MIN_DOWNLOAD_VALUE
     );
 
-    this._jokesAmount = value;
+    this._jokesAmount = !value ? 0 : value;
     this.onJokesChange.emit({
       jokesAmount: this.jokesAmount,
       isAmountValid: this.isAmountValid,
