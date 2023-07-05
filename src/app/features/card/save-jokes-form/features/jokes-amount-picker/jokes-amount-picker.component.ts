@@ -1,5 +1,8 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { MAX_DOWNLOAD_VALUE, MIN_DOWNLOAD_VALUE } from 'src/app/constants/jokes-value';
+import {
+  MAX_DOWNLOAD_VALUE,
+  MIN_DOWNLOAD_VALUE,
+} from 'src/app/constants/jokes-value';
 
 @Component({
   selector: 'app-jokes-amount-picker',
@@ -7,32 +10,31 @@ import { MAX_DOWNLOAD_VALUE, MIN_DOWNLOAD_VALUE } from 'src/app/constants/jokes-
   styleUrls: ['./jokes-amount-picker.component.scss'],
 })
 export class JokesAmountPickerComponent {
-  @Output() onJokesChange = new EventEmitter<{ jokesAmount: number; isAmountValid: boolean }>();
-  public jokesAmount = 0;
+  @Output() onJokesChange = new EventEmitter<{
+    jokesAmount: number;
+    isAmountValid: boolean;
+  }>();
+  private _jokesAmount = 0;
   public errorClass = '';
-  private _isAmountValid = true;
+  public isAmountValid = true;
 
-  get isAmountValid() {
-    return this._isAmountValid;
+  get jokesAmount() {
+    return this._jokesAmount;
   }
 
-  set isAmountValid(isValid: boolean) {
-    this._isAmountValid = isValid;
-    this.setErrorClass(!isValid);
-  }
+  set jokesAmount(value: number) {
+    this.isAmountValid = !(
+      value > MAX_DOWNLOAD_VALUE || value < MIN_DOWNLOAD_VALUE
+    );
 
-  public changeJokesAmount(value: number): void {
-    this.isAmountValid =
-      !(value > MAX_DOWNLOAD_VALUE || value < MIN_DOWNLOAD_VALUE)
-
-    this.jokesAmount = value;
+    this._jokesAmount = value;
     this.onJokesChange.emit({
       jokesAmount: this.jokesAmount,
       isAmountValid: this.isAmountValid,
     });
   }
 
-  private setErrorClass(isError: boolean) {
-    this.errorClass = isError ? 'error' : '';
+  public changeJokesAmount(value: number): void {
+    this.jokesAmount = value;
   }
 }

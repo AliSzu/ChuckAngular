@@ -57,7 +57,7 @@ export class CardComponent implements OnInit {
 
   private getErrorMessage(message?: string, status?: number): string {
     return message
-      ? status + ' ' + message
+      ? `${status} ${message}`
       : this.translate.instant('error.unknown');
   }
 }

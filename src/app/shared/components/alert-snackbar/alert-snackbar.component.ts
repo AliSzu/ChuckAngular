@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { TranslateService } from '@ngx-translate/core';
+import { SNACKBAR_TIMEOUT } from 'src/app/constants/snackbar';
 import { JokeError } from 'src/app/core/models/joke-error';
 import { SnackbarService } from 'src/app/services/snackbar.service';
 
@@ -25,19 +26,19 @@ export class AlertSnackbarComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.snackbarService.snackbarState
+    this.snackbarService.snackbarState$
       .pipe(untilDestroyed(this))
       .subscribe((state) => {
         this.error = state;
         setTimeout(() => {
           this.error.isPresent = false;
-        }, 5000);
+        }, SNACKBAR_TIMEOUT);
       });
   }
 
   public closeSnackbar(): void {
     this.snackbarService.closeSnackbar();
-  }
+  }     
 
   private setUnknownErrorMessage(value: string): void {
     if (this.error.isPresent && this.error.status === 0) {

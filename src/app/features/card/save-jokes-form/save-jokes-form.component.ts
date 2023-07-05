@@ -1,9 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { FILE_NAME } from 'src/app/constants/jokes';
 import { ChuckJokesService } from 'src/app/services/chuck-jokes.service';
 import { SnackbarService } from 'src/app/services/snackbar.service';
-import { prettifyJokesJSON } from 'src/utils/jokes-utils';
+import { createDownloadLink } from 'src/utils/jokes-utils';
 
 @Component({
   selector: 'app-save-jokes-form',
@@ -38,31 +37,14 @@ export class SaveJokesFormComponent implements OnInit {
     this.setIsButtonDisabled();
   }
 
-  public setJokesAmount(output: {
+  public setJokesAmount(data: {
     jokesAmount: number;
     isAmountValid: boolean;
   }): void {
-    this.jokesAmount = output.jokesAmount;
-    this.isAmountValid = output.isAmountValid;
+    this.jokesAmount = data.jokesAmount;
+    this.isAmountValid = data.isAmountValid;
 
     this.setIsButtonDisabled();
-  }
-
-  private setIsButtonDisabled(): void {
-    this.isButtonDisabled =
-      this.jokesAmount < 1 || !this.isAmountValid || this.isLoading;
-  }
-
-  private createDownloadLink(jokes: string[]): void {
-    const jokesJSON = prettifyJokesJSON(jokes);
-    const blob = new Blob([jokesJSON], {
-      type: 'text/plain',
-    });
-    const url = URL.createObjectURL(blob);
-    const link = document.createElement('a');
-    link.download = FILE_NAME;
-    link.href = url;
-    link.click();
   }
 
   public downloadJokes(): void {
@@ -72,8 +54,8 @@ export class SaveJokesFormComponent implements OnInit {
       .downloadJokes(this.jokesAmount, this.name, this.category)
       .subscribe({
         next: (res) => {
-          (jokesArray = res.map((joke) => joke.value)),
-            this.createDownloadLink(jokesArray);
+          jokesArray = res.map((joke) => joke.value),
+          createDownloadLink(jokesArray);
           this.isLoading = false;
         },
         error: (e) =>
@@ -84,9 +66,14 @@ export class SaveJokesFormComponent implements OnInit {
       });
   }
 
+  private setIsButtonDisabled(): void {
+    this.isButtonDisabled =
+      this.jokesAmount < 1 || !this.isAmountValid || this.isLoading;
+  }
+
   private getErrorMessage(message?: string, status?: number): string {
     return message
-      ? status + ' ' + message
+      ? `${status} ${message}`
       : this.translate.instant('error.unknown');
   }
 }

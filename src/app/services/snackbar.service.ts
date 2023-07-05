@@ -11,7 +11,7 @@ export class SnackbarService {
     message: '',
     status: 0,
   } as JokeError);
-  public snackbarState = this.snackbarSubject.asObservable();
+  public snackbarState$ = this.snackbarSubject.asObservable();
 
   constructor() {}
 

@@ -38,7 +38,10 @@ export class CategorySelectComponent implements OnInit {
     this.categoryService.getCategories().subscribe({
       next: (res) => (this.categories = res),
       error: (e) =>
-      this.snackbarService.showSnackbar(this.getErrorMessage(e.status, e.error.error), e.status)
+        this.snackbarService.showSnackbar(
+          this.getErrorMessage(e.status, e.error.error),
+          e.status
+        ),
     });
   }
 
@@ -63,8 +66,7 @@ export class CategorySelectComponent implements OnInit {
 
   private getErrorMessage(message?: string, status?: number): string {
     return message
-      ? status + ' ' + message
+      ? `${status} ${message}`
       : this.translate.instant('error.unknown');
   }
-
 }
