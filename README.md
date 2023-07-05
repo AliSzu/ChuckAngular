@@ -7,5 +7,7 @@ Project built with Angular using Angular CLI version 16.1.1
 - Download all your favourite jokes
 - Switch languages between english and polish to bettter navigate the website
 
+![Chuck Norris](readmeImage.png "Title")
+
 ## Run
 Run the project using <code>ng serve</code> locally or visit website on Github Pages
