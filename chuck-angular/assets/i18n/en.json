@@ -1,0 +1,13 @@
+{
+  "inputField": "Impersonate Chuck Norris",
+  "button": {
+    "draw": "Draw a random {{name}} Joke",
+    "save": "Save Jokes"
+  },
+  "error": {
+    "title": "Whoops! Something went wrong",
+    "message": "An error has occurred : {{error}}",
+    "unknown": "Unknown error",
+    "input": "You can pick a number from 1 to 100"
+  }
+}
