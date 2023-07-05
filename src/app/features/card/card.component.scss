@@ -1,14 +1,20 @@
+@import "../../../styles.scss";
+
 .card {
-  background-color: white;
+  background-color: var(--white-color);
   border-radius: 20px;
   width: 100%;
-  max-width: 30rem;
   display: flex;
   flex-direction: column;
-  box-shadow: rgba(150, 150, 150, 0.19) 0px 3px 10px;
+  row-gap: 1rem;
+  padding: 1rem;
 
-  row-gap: 1.5rem;
-  padding: 1.5rem;
+  @include sm {
+    max-width: 30em;
+    box-shadow: rgba(150, 150, 150, 0.19) 0px 3px 10px;
+    row-gap: 1.5rem;
+    padding: 1.5rem;
+  }
 }
 
 .language-container {

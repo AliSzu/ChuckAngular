@@ -1,6 +1,8 @@
+@import "../../../../styles.scss";
+
 .image {
   width: 100%;
-  max-height: 9rem;
+  max-height: 5rem;
   border-radius: var(--border-radius);
   &-chuck {
     object-fit: cover;
@@ -8,5 +10,8 @@
   }
   &-unknown {
     object-fit: contain;
+  }
+  @include sm {
+    max-height: 9rem;
   }
 }
