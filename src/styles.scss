@@ -1,5 +1,6 @@
 @import "./app/styles/buttons";
 @import "./app/styles/variables";
+@import "./app/styles/mixins";
 
 html,
 body {
@@ -13,5 +14,10 @@ body {
 
   width: 100%;
   height: 100%;
+
+  @include sm {
+    font-size: 1em;
+    background-color: var(--light-gray-color);
+  }
 }
 
