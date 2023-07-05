@@ -1,0 +1,5 @@
+<div class="input-container" [ngClass]="{'error': !isAmountValid}">
+<button class="btn btn-amount btn-amount-decrement" (click)="changeJokesAmount(jokesAmount-1)">-</button>
+<input class="save-input" type="number" [(ngModel)]="jokesAmount" value="jokesAmount"/>
+<button class="btn btn-amount btn-amount-increment" (click)="changeJokesAmount(jokesAmount+1)">+</button>
+</div>

@@ -7,9 +7,6 @@
   padding: 1em;
   border-radius: var(--border-radius);
   cursor: pointer;
-  &::first-letter {
-    text-transform: uppercase;
-  }
 }
 
 ul {
