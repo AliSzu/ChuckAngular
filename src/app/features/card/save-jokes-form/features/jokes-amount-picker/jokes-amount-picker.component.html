@@ -1,5 +1,20 @@
-<div class="input-container" [ngClass]="{'error': !isAmountValid}">
-<button class="btn btn-amount btn-amount-decrement" (click)="changeJokesAmount(jokesAmount-1)">-</button>
-<input class="save-input" type="number" [(ngModel)]="jokesAmount" value="jokesAmount"/>
-<button class="btn btn-amount btn-amount-increment" (click)="changeJokesAmount(jokesAmount+1)">+</button>
+<div class="input-container" [ngClass]="{ error: !isAmountValid }">
+  <button
+    class="btn btn-amount btn-amount-decrement"
+    (click)="changeJokesAmount(jokesAmount - 1)"
+  >
+    <app-amount-picker-icon [iconType]="'&#8722;'"></app-amount-picker-icon>
+  </button>
+  <input
+    class="save-input"
+    type="number"
+    [(ngModel)]="jokesAmount"
+    value="jokesAmount"
+  />
+  <button
+    class="btn btn-amount btn-amount-increment"
+    (click)="changeJokesAmount(jokesAmount + 1)"
+  >
+    <app-amount-picker-icon [iconType]="'+'"></app-amount-picker-icon>
+  </button>
 </div>
